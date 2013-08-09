@@ -118,6 +118,20 @@ $bannerHeight: 295px;
     margin-right: auto;   
 }
 
+/* social icons */
+#social-icons {
+    background: image-url("socialbuttons_bg.png") no-repeat;
+    width: 216px;
+    height: 72px;
+    padding-top: 14px;
+    padding-left: 10px;
+    a {
+        float: left;
+        padding-left: 1px;
+        padding-right: 1px;
+    }
+}
+
 /* content */
 .content-wrapper {
     display: block;
