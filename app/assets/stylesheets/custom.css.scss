@@ -1,13 +1,13 @@
 @import "bootstrap";
 
+$grayLight: #bbb;
+$white: #fff;
+$pageWidth: 960px;
+
 /* universal */
 
 html {
     overflow-y: scroll;
-}
-
-body {
-    padding-top: 60px;
 }
 
 section {
@@ -20,11 +20,11 @@ textarea {
 
 .center {
     text-align: center;
+    h1 {
+        margin-bottom: 10px;
+    }
 }
 
-.center h1 {
-    margin-bottom: 10px;
-}
 
 /* typography */
 
@@ -45,7 +45,7 @@ h2 {
     margin-bottom: 30px;
     text-align: center;
     font-weight: normal;
-    color: #999;
+    color: $grayLight;
 }
 
 p {
@@ -53,21 +53,75 @@ p {
     line-height: 1.7em;
 }
 
+
+
 /* header */
+
+#top {
+    background-image: image-url("topnav_bg.png");
+    height: 73px;
+    position: relative;
+    z-index: 1;    
+}
+
+.width-constraint {
+    width: $pageWidth;
+    margin: auto;
+}
 
 #logo {
     float: left;
-    margin-right: 10px;
-    font-size: 1.7em;
-    color: #fff;
-    text-transform: uppercase;
-    letter-spacing: -1px;
-    padding-top: 9px;
-    font-weight: bold;
-    line-height: 1;
+    position: absolute;
+    top: 10px;
+    margin-left: 10px;
 }
 
-#logo:hover {
-    color: #fff;
-    text-decoration: none;
+ul.list-nav {
+    list-style: none;
+    margin: 20px;
+    float: right;
+    font-size: 1.3em;
+    li {
+        float: left;
+        a {
+            text-decoration: none;
+            padding: 20px 0px 0px 50px;
+            color: $grayLight;
+            text-align: center;
+            float: left;
+            &:hover {
+                color: $white;
+            }
+        }
+    }
 }
+
+/* banner */
+$bannerHeight: 295px;
+#banner {
+    background: image-url("banner.jpg") #131313 center top no-repeat;
+    height: $bannerHeight;
+    .banner-content {
+        width: 50%;
+        margin: auto;
+        height: $bannerHeight;
+        text-align: center;
+        padding-top: 250px;
+    }
+}
+
+#apple-store-button {
+    width: 136px; 
+    height: 49px; 
+    display: block;
+    margin-left: auto;
+    margin-right: auto;   
+}
+
+/* content */
+.content-wrapper {
+    display: block;
+    padding: 10px;
+}
+
+
