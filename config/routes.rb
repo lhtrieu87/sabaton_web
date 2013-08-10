@@ -1,6 +1,10 @@
 SabatonWeb::Application.routes.draw do
+    # This will get eliminated.
+    get "users/new"
+    
     root 'static_pages#home'
     get '/static_pages/about', to: 'static_pages#about', as: 'about'
+    match '/signup', to: 'users#new', via: 'get'
 # The priority is based upon order of creation: first created -> highest priority.
 # See how all your routes lay out with "rake routes".
 
