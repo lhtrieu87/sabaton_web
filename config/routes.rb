@@ -1,6 +1,5 @@
 SabatonWeb::Application.routes.draw do
-    # This will get eliminated.
-    get "users/new"
+    resources :users
     
     root 'static_pages#home'
     get '/static_pages/about', to: 'static_pages#about', as: 'about'
