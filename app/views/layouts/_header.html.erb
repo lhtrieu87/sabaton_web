@@ -11,12 +11,30 @@
                 <li>
                     <%= link_to "ABOUT US", about_path %>
                 </li>
+                <% if signed_in? %>
+                <li id="fat-menu" class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">ACCOUNT <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <%= link_to "Profile", current_user %>
+                        </li>
+                        <li>
+                            <%= link_to "Settings", '#' %>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <%= link_to "Sign out", signout_path, method: "delete" %>
+                        </li>
+                    </ul>
+                </li>
+                <% else %>
                 <li>
                     <%= link_to "SIGN UP", signup_path %>
                 </li>
                 <li>
-                    <%= link_to "LOG IN", "#" %>
+                    <%= link_to "SIGN IN", signin_path %>
                 </li>
+                <% end %>
             </ul>
         </nav>
     </div>
