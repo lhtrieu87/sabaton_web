@@ -15,6 +15,7 @@ describe User do
     it {should respond_to(:password_confirmation)}
     it {should respond_to(:authenticate)}
     it {should respond_to(:remember_token)}
+    it {should respond_to(:aspect_topics)}
 
     it {should be_valid}
 
@@ -111,5 +112,30 @@ describe User do
     describe "remember token" do
         before {@user.save}
         its(:remember_token) {should_not be_blank}
+    end
+
+    describe "aspect_topic associations" do
+
+        before {@user.save}
+        let!(:older_topic) do
+            FactoryGirl.create(:aspect_topic, user: @user, created_at: 1.day.ago)
+        end
+        let!(:newer_topic) do
+            FactoryGirl.create(:aspect_topic, user: @user, created_at: 1.hour.ago)
+        end
+
+        it "should have the right aspect topics in the right order" do
+            topics = @user.aspect_topics.to_a
+            expect(@user.aspect_topics.to_a).to eq [newer_topic, older_topic]
+        end
+
+        it "should destroy associated aspect topics" do
+            topics = @user.aspect_topics.to_a
+            @user.destroy
+            expect(topics).not_to be_empty
+            topics.each do |topic|
+                expect(AspectTopic.where(id: topic.id)).to be_empty
+            end
+        end
     end
 end
