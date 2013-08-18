@@ -60,10 +60,10 @@ describe "User pages" do
         describe "page" do
             it {should have_content("Update Your Profile")}
             it {should have_title("Edit User")}
-            it {should have_link('change', href: 'http://gravatar.com/emails')}
+            it {should have_link('Change', href: 'http://gravatar.com/emails')}
         end
         
-        describe "with valid information" do
+        describe "with invalid information" do
             before {click_button "Save changes"}
             it {should have_content('error')}
         end
