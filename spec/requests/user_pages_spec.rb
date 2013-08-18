@@ -23,10 +23,10 @@ describe "User pages" do
 
         describe "with valid information" do
             before do
-                fill_in "Name",         with: "Example User"
-                fill_in "Email",        with: "user@example.com"
-                fill_in "Password",     with: "test_password"
-                fill_in "Confirmation", with: "test_password"
+                fill_in "Name",             with: "Example User"
+                fill_in "Email",            with: "user@example.com"
+                fill_in "Password",         with: "test_password"
+                fill_in "Confirm Password", with: "test_password"
             end
 
             it "should create a user" do
@@ -47,9 +47,49 @@ describe "User pages" do
 
     describe "profile page" do
         let(:user) {FactoryGirl.create(:user)}
-        before {visit user_path(user)}
-
+        before do 
+            sign_in user
+            visit user_path(user)
+        end
         it {should have_content(user.name)}
         it {should have_title(user.name)}
+    end
+    
+    describe "edit" do
+        let(:user) {FactoryGirl.create(:user)}
+        before do
+            sign_in user
+            visit edit_user_path(user)
+        end
+        describe "page" do
+            it {should have_content("Update Your Profile")}
+            it {should have_title("Edit User")}
+            it {should have_link('Change', href: 'http://gravatar.com/emails')}
+        end
+        
+        describe "with invalid information" do
+            before {click_button "Save changes"}
+            it {should have_content('error')}
+        end
+        
+        describe "with valid information" do
+            let(:new_name)  {"New Name"}
+            let(:new_email) {"new@example.com"}
+            let(:old_remember_token) {user.remember_token}
+            before do
+                fill_in "Name", with: new_name
+                fill_in "Email", with: new_email
+                fill_in "Password", with: user.password
+                fill_in "Confirm Password", with: user.password
+                click_button "Save changes"
+            end
+    
+            it {should have_title(new_name)}
+            it {should have_selector('div.alert.alert-success')}
+            it {should have_link('Sign out', href: signout_path)}
+            specify {expect(user.reload.name).to  eq new_name}
+            specify {expect(user.reload.email).to eq new_email}
+            specify {expect(user.reload.remember_token).to_not eq :old_remember_token}
+        end
     end
 end
