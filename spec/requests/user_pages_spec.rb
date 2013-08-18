@@ -52,4 +52,20 @@ describe "User pages" do
         it {should have_content(user.name)}
         it {should have_title(user.name)}
     end
+    
+    describe "edit" do
+        let(:user) {FactoryGirl.create(:user)}
+        before {visit edit_user_path(user)}
+        
+        describe "page" do
+            it {should have_content("Update Your Profile")}
+            it {should have_title("Edit User")}
+            it {should have_link('change', href: 'http://gravatar.com/emails')}
+        end
+        
+        describe "with valid information" do
+            before {click_button "Save changes"}
+            it {should have_content('error')}
+        end
+    end
 end
