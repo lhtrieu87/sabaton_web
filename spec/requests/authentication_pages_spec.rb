@@ -35,4 +35,25 @@ describe "Authentication" do
             end
         end
     end
+    
+    describe "authorization" do
+        describe "for non-signed-in users" do
+            let(:user) {FactoryGirl.create(:user)}
+
+            describe "in the Users controller" do
+
+                describe "visiting the edit page" do
+                    before {visit edit_user_path(user)}
+                    # Non-signed in user is not authorized to view user edit page.
+                    it {should have_title('Sign In')}
+                end
+
+                describe "submitting to the update action" do
+                    before {patch user_path(user)}
+                    # Non-signed in user is not authorized to update user's profile.
+                    specify {expect(response).to redirect_to(signin_path)}
+                end
+            end
+        end
+    end
 end
