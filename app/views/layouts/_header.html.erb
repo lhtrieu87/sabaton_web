@@ -11,9 +11,23 @@
                 <li>
                     <%= link_to "ABOUT US", about_path %>
                 </li>
+                <li>
+                    <%= link_to "FORUM", "#" %>
+                </li>
+                <li id="fat-menu" class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b class="caret"></b> SOCIAL</a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <%= link_to "Facebook", "#" %>
+                        </li>
+                        <li>
+                            <%= link_to "Youtube", "#" %>
+                        </li>
+                    </ul>
+                </li>
                 <% if signed_in? %>
                 <li id="fat-menu" class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">ACCOUNT <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b class="caret"></b> ACCOUNT</a>
                     <ul class="dropdown-menu">
                         <li>
                             <%= link_to "Profile", current_user %>

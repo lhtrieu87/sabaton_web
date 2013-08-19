@@ -93,7 +93,7 @@ ul.list-nav {
         float: left;
         a {
             text-decoration: none;
-            padding: 40px 25px 10px 25px;
+            padding: 40px 15px 10px 15px;
             color: $grayLight;
             text-align: center;
             float: left;
@@ -121,7 +121,8 @@ ul.list-nav {
     }
     
     li > .dropdown-menu {
-        margin-top: 5px;
+        margin-top: 3px;
+        min-width: 130px;
         &:after {
           content: '';
           display: inline-block;
@@ -131,7 +132,7 @@ ul.list-nav {
           position: absolute;
           top: -6px;
           left: auto;
-          right: 30px;
+          right: 103px;
         }
     }
     
@@ -293,5 +294,3 @@ input {
     margin-top: 45px;
     @include box_sizing;
 }
-
-
