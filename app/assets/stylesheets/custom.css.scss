@@ -63,7 +63,6 @@ p {
 }
 
 
-
 /* header */
 
 #top {
@@ -229,12 +228,30 @@ $bannerHeight: 295px;
 .content-wrapper {
     display: block;
     padding: 10px;
+    margin: auto;
+    
+    .block4 {
+        width: 480px;
+    }
+    
+    .block8 {
+        width: 960px;
+    }
+    
+    .centralized {
+        margin: auto;
+    }
+}
+
+[class*="span"] {
+    float: right;
 }
 
 aside {
     section {
         padding: 10px 0;
         border-top: 1px solid $grayLighter;
+        margin: 0px 20px;
         &:first-child {
             border: 0;
             padding-top: 20px;
@@ -259,7 +276,28 @@ aside {
     margin-right: 10px;
 }
 
-/* forms */
+/* topics --start */
+.topics {
+    margin: 25px 0 0 0;
+    list-style: none;
+
+    li {
+        padding: 10px 0;
+        border-top: 1px solid #e8e8e8;
+    }
+}
+
+.content {
+    display: block;
+}
+
+.timestamp {
+    color: $grayLight;
+}
+/* topics --end */
+
+
+/* forms --start */
 input, textarea, select, .uneditable-input {
     border: 1px solid #bbb;
     width: 100%;
@@ -284,6 +322,8 @@ input {
     @extend .control-group;
     @extend .error;
 }
+
+/* forms --end */
 
 /* miscellaneous */
 

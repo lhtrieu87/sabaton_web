@@ -1,5 +1,5 @@
 <% provide(:title, @user.name) %>
-<div class="row">
+<div class="block8 centralized">
     <aside class="span4">
         <section>
             <h1> 
@@ -9,4 +9,13 @@
             </h1>
         </section>
     </aside>
+    <div class="span8">
+        <% if @user.aspect_topics.any? %>
+            <h3>No. of topics: <%= @user.aspect_topics.count %></h3>
+            <ol class="topics">
+                <%= render @topics %>            
+            </ol>
+            <%= will_paginate @topics %>
+        <% end %>
+    </div>
 </div>
