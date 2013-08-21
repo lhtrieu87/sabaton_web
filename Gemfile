@@ -26,6 +26,8 @@ end
 # Hash function irreversibly encrypt the password
 gem 'bcrypt-ruby', '3.0.1'
 
+gem 'faker', '~>1.1.2'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 

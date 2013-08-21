@@ -47,15 +47,24 @@ describe "User pages" do
 
     describe "profile page" do
         let(:user) {FactoryGirl.create(:user)}
-        before do 
-            sign_in user
-            visit user_path(user)
-        end
+        let!(:topic1) {FactoryGirl.create(:aspect_topic, user: user, content: "Topic 1")}
+        let!(:topic2) {FactoryGirl.create(:aspect_topic, user: user, content: "Topic 2")}
+        
+        before {visit user_path(user)}
+        
         it {should have_content(user.name)}
         it {should have_title(user.name)}
+        
+        
+        describe "topics" do
+            it {should have_content(topic1.content)}
+            it {should have_content(topic2.content)}
+            it {should have_content(user.aspect_topics.count)}
+        end
     end
     
     describe "edit" do
+        
         let(:user) {FactoryGirl.create(:user)}
         before do
             sign_in user
