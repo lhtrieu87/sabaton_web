@@ -18,7 +18,7 @@ namespace :db do
         users = User.all(limit: 6)
         50.times do
             users.each do |user|
-                content = Faker::Lorem.sentence(5)
+                content = Faker::Lorem.sentence(20)
                 user.aspect_topics.create!(content: content)
             end
         end          

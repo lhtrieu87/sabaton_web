@@ -24,7 +24,7 @@ section {
 }
 
 textarea {
-    resize: vertical;
+    height: 150px;
 }
 
 .center {
@@ -249,11 +249,9 @@ $bannerHeight: 295px;
 
 aside {
     section {
-        padding: 10px 0;
-        border-top: 1px solid $grayLighter;
+        padding: 0px 0px 10px 20px;
         &:first-child {
             border: 0;
-            padding-top: 20px;
         }
         span {
             display: block;
@@ -261,11 +259,10 @@ aside {
             line-height: 1;
         }
         h1 {
-            font-size: 1.3em;
+            font-size: 1.2em;
             text-align: left;
             letter-spacing: -1px;
             margin-bottom: 3px;
-            margin-top: 0px;
         }
     }
 }

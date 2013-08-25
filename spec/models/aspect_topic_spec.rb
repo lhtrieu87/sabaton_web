@@ -31,4 +31,13 @@ describe AspectTopic do
         before {@topic.content = "a" * 251}
         it {should_not be_valid}
     end
+    
+    describe "displayed in the time descending order" do
+        let(:user1) {FactoryGirl.create(:user, email: 'sample1@sample1.com')}
+        let(:user2) {FactoryGirl.create(:user, email: 'sample2@sample2.com')}
+        let!(:old_topic) {FactoryGirl.create(:aspect_topic, user: user1, content: "Topic 1", created_at: 1.day.ago)}
+        let!(:new_topic) {FactoryGirl.create(:aspect_topic, user: user2, content: "Topic 2", created_at: 1.hour.ago)}
+        
+        specify {expect(AspectTopic.all.to_a).to eq [new_topic, old_topic]}
+    end
 end

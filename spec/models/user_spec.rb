@@ -126,7 +126,7 @@ describe User do
 
         it "should have the right aspect topics in the right order" do
             topics = @user.aspect_topics.to_a
-            expect(@user.aspect_topics.to_a).to eq [newer_topic, older_topic]
+            expect(topics).to eq [newer_topic, older_topic]
         end
 
         it "should destroy associated aspect topics" do
