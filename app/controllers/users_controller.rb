@@ -1,21 +1,22 @@
 class UsersController < ApplicationController
     before_action :signed_in_user, only: [:edit, :update]
     before_action :correct_user,   only: [:edit, :update]
+    
     def new
         @user = User.new
     end
     
-    def show
-        @user = User.find(params[:id])
-        @topics = @user.aspect_topics.paginate(page: params[:page])        
-    end
+    # def show
+        # @user = User.find(params[:id])
+        # @topics = @user.aspect_topics.paginate(page: params[:page], per_page: 10)        
+    # end
     
     def create
         @user = User.new(user_params)    # Not the final implementation!
         if @user.save
             sign_in @user
             flash[:success] = "Welcome to the Sabaton Studio"
-            redirect_to @user
+            redirect_to root_url
         else
             render 'new'
         end
@@ -28,7 +29,7 @@ class UsersController < ApplicationController
         if @user.update_attributes(user_params)
             flash[:success] = "Profile updated";
             sign_in @user
-            redirect_to @user
+            redirect_to root_url
         else
             render 'edit'
         end

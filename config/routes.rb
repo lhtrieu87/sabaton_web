@@ -1,5 +1,5 @@
 SabatonWeb::Application.routes.draw do
-    resources :users
+    resources :users, except: [:show]
     resources :sessions, only: [:new, :create, :destroy]
     resources :aspect_topics, only: [:create, :destroy]
 
