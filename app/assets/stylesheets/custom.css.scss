@@ -17,6 +17,7 @@ $pageWidth: 960px;
 
 html {
     overflow-y: scroll;
+    font-family: "Helvetica Neue, Helvetica, Arial, sans-serif";
 }
 
 section {
@@ -243,9 +244,9 @@ $bannerHeight: 295px;
     }
 }
 
-[class*="span"] {
-    float: right;
-}
+// [class*="span"] {
+    // float: right;
+// }
 
 aside {
     section {
@@ -269,7 +270,8 @@ aside {
 
 .gravatar {
     float: left;
-    margin-right: 10px;
+    width: 80px;
+    height: 80px;
 }
 
 /* topics --start */
@@ -285,12 +287,13 @@ aside {
 }
 
 .content {
-    display: block;
+    font-size: 1.2em;
+    line-height: 1.3em;
 }
 
-.timestamp {
-    color: $grayLight;
-}
+// .timestamp {
+    // color: $grayLight;
+// }
 /* topics --end */
 
 
