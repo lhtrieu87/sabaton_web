@@ -68,6 +68,8 @@ describe 'Static pages' do
         describe 'displays all topics' do
             it {should have_content(topic1.content)}
             it {should have_content(topic2.content)}
+            it {should have_selector("li##{topic1.id}", text: topic1.content)}
+            it {should have_selector("li##{topic2.id}", text: topic2.content)}
             it {should have_content(AspectTopic.all.count)}
         end
     end
