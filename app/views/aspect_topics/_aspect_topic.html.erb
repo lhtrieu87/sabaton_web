@@ -1,11 +1,28 @@
-<li id="<%= aspect_topic.id %>">
-    <%= link_to gravatar_for(aspect_topic.user), aspect_topic.user %>
-    <span class="user"> <%= link_to aspect_topic.user.name, aspect_topic.user %> </span>
-    <span class="content"><%= aspect_topic.content %></span>
-    <span class="timestamp"> Created <%= time_ago_in_words(aspect_topic.created_at) %> ago. </span>
-    <% if current_user?(aspect_topic.user) %>
-        <%= link_to "delete", aspect_topic, method: :delete, 
-            data: { confirm: "You sure?" }, 
-            title: aspect_topic.content %>
-    <% end %>
+<li id="<%= aspect_topic.id %>" class"row span8">
+    <div class="row">
+        <span class="span8"><h4><strong><%= aspect_topic.user.name %></strong></h4></span>
+    </div>
+    <p></p>
+    <div class="row">
+        <span class="thumbnail span2 gravatar"><%= gravatar_for(aspect_topic.user) %></span>
+        <span class="content span6"><%= aspect_topic.content %></span>
+    </div>
+    <div class="row">
+        <div class="span8">
+            <p></p>
+            <p>
+                <i class="icon-time"></i>
+                <span>Created <%= time_ago_in_words(aspect_topic.created_at) %> ago.</span>
+                | <i class="icon-comment"></i>
+                <span>3 comments</span>
+                <% if current_user?(aspect_topic.user) %>
+                    | <i class="icon-trash"></i>
+                    <%= link_to "Delete", aspect_topic, method: :delete,
+                    data: { confirm: "You sure?" },
+                    title: aspect_topic.content %>
+                <% end %>
+            </p>
+        </div>
+    </div>
+
 </li>
