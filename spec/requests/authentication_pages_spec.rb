@@ -95,6 +95,19 @@ describe "Authentication" do
                 before {patch user_path(wrong_user)}
                 specify {expect(response).to redirect_to(root_url)}
             end
+            
+            describe "delete another user's topic" do
+                let!(:topic) {FactoryGirl.create(:aspect_topic, user: wrong_user)}
+                
+                specify "the topic should not be destroyed" do
+                    expect{delete aspect_topic_path(:topic)}.not_to change(AspectTopic, :count).by(-1)
+                end
+                
+                describe "redirected back to the root_path" do
+                    before {delete aspect_topic_path(:topic)}
+                    specify {expect(response).to redirect_to(root_url)}
+                end
+            end
         end
     end
 end

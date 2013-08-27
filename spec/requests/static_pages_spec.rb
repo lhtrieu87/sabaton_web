@@ -63,14 +63,32 @@ describe 'Static pages' do
                     end
                 end
             end
+            
+            describe "topic destruction" do
+                
+                describe "as owning user" do
+                    it "should delete a topic" do
+                        within(".topics li##{topic1.id}") do
+                            expect{click_link "delete"}.to change(AspectTopic, :count).by(-1)
+                        end
+                    end
+                end
+            end
         end
         
         describe 'displays all topics' do
-            it {should have_content(topic1.content)}
-            it {should have_content(topic2.content)}
             it {should have_selector("li##{topic1.id}", text: topic1.content)}
             it {should have_selector("li##{topic2.id}", text: topic2.content)}
             it {should have_content(AspectTopic.all.count)}
+        end
+        
+        describe 'only shows delete link for those links created by the currently signed in user' do
+            before do
+                sign_in(user1)
+                visit forum_path
+            end
+            it {should have_selector("li##{topic1.id} a", text: "delete")}
+            it {should_not have_selector("li##{topic2.id} a", text: "delete")}
         end
     end
 end
