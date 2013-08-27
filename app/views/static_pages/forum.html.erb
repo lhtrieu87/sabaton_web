@@ -1,11 +1,11 @@
 <% provide(:title, 'Aspect Forum') %> <h1>Aspect Forum</h1>
 <div class="block8 centralized">
-    <!-- <% if signed_in? %>
+    <% if signed_in? %>
     <aside class="span5">
         <%= render 'shared/user_info', user: @current_user %>
         <%= render 'shared/create_topic_form' %>
     </aside>
-    <% end %> -->
+    <% end %>
     <div class="span8">
         <% topics = @topics = AspectTopic.all.paginate(page: params[:page], per_page: 10)
         if topics.any? %>
