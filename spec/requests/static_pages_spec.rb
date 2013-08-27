@@ -69,7 +69,7 @@ describe 'Static pages' do
                 describe "as owning user" do
                     it "should delete a topic" do
                         within(".topics li##{topic1.id}") do
-                            expect{click_link "delete"}.to change(AspectTopic, :count).by(-1)
+                            expect{click_link "Delete"}.to change(AspectTopic, :count).by(-1)
                         end
                     end
                 end
@@ -87,8 +87,8 @@ describe 'Static pages' do
                 sign_in(user1)
                 visit forum_path
             end
-            it {should have_selector("li##{topic1.id} a", text: "delete")}
-            it {should_not have_selector("li##{topic2.id} a", text: "delete")}
+            it {should have_selector("li##{topic1.id} a", text: "Delete")}
+            it {should_not have_selector("li##{topic2.id} a", text: "Delete")}
         end
     end
 end
