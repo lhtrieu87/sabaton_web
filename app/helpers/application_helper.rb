@@ -7,4 +7,8 @@ module ApplicationHelper
             "#{base_title} | #{page_title}"
         end  
     end
+    
+    def get_logger
+        ActiveSupport::TaggedLogging.new(Logger.new(STDOUT))
+    end
 end

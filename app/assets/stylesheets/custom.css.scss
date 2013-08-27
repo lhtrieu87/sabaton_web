@@ -24,7 +24,7 @@ section {
 }
 
 textarea {
-    resize: vertical;
+    height: 150px;
 }
 
 .center {
@@ -63,7 +63,6 @@ p {
 }
 
 
-
 /* header */
 
 #top {
@@ -93,7 +92,7 @@ ul.list-nav {
         float: left;
         a {
             text-decoration: none;
-            padding: 40px 25px 10px 25px;
+            padding: 40px 15px 10px 15px;
             color: $grayLight;
             text-align: center;
             float: left;
@@ -121,7 +120,8 @@ ul.list-nav {
     }
     
     li > .dropdown-menu {
-        margin-top: 5px;
+        margin-top: 3px;
+        min-width: 130px;
         &:after {
           content: '';
           display: inline-block;
@@ -131,7 +131,7 @@ ul.list-nav {
           position: absolute;
           top: -6px;
           left: auto;
-          right: 30px;
+          right: 103px;
         }
     }
     
@@ -228,15 +228,30 @@ $bannerHeight: 295px;
 .content-wrapper {
     display: block;
     padding: 10px;
+    margin: auto;
+    
+    .block4 {
+        width: 480px;
+    }
+    
+    .block8 {
+        width: 960px;
+    }
+    
+    .centralized {
+        margin: auto;
+    }
+}
+
+[class*="span"] {
+    float: right;
 }
 
 aside {
     section {
-        padding: 10px 0;
-        border-top: 1px solid $grayLighter;
+        padding: 0px 0px 10px 20px;
         &:first-child {
             border: 0;
-            padding-top: 20px;
         }
         span {
             display: block;
@@ -244,11 +259,10 @@ aside {
             line-height: 1;
         }
         h1 {
-            font-size: 1.4em;
+            font-size: 1.2em;
             text-align: left;
             letter-spacing: -1px;
             margin-bottom: 3px;
-            margin-top: 0px;
         }
     }
 }
@@ -258,7 +272,29 @@ aside {
     margin-right: 10px;
 }
 
-/* forms */
+/* topics --start */
+.topics {
+    margin: 25px 0 0 0;
+    list-style: none;
+
+    li {
+        padding: 10px 0;
+        border-top: 1px solid #e8e8e8;
+        min-height: 120px;
+    }
+}
+
+.content {
+    display: block;
+}
+
+.timestamp {
+    color: $grayLight;
+}
+/* topics --end */
+
+
+/* forms --start */
 input, textarea, select, .uneditable-input {
     border: 1px solid #bbb;
     width: 100%;
@@ -284,6 +320,8 @@ input {
     @extend .error;
 }
 
+/* forms --end */
+
 /* miscellaneous */
 
 .debug_dump {
@@ -293,5 +331,3 @@ input {
     margin-top: 45px;
     @include box_sizing;
 }
-
-

@@ -39,30 +39,51 @@ describe "User pages" do
                 let(:user) {User.find_by(email: 'user@example.com')}
                 
                 it {should have_link('Sign out')}
-                it {should have_title(user.name)}
+                it {should have_title("Sabaton")}
                 it {should have_selector('div.alert.alert-success', text: 'Welcome')}
             end
         end
     end
 
-    describe "profile page" do
-        let(:user) {FactoryGirl.create(:user)}
-        before do 
-            sign_in user
-            visit user_path(user)
-        end
-        it {should have_content(user.name)}
-        it {should have_title(user.name)}
-    end
+    # describe "profile page" do
+        # let(:user) {FactoryGirl.create(:user)}
+        # let!(:topic1) {FactoryGirl.create(:aspect_topic, user: user, content: "Topic 1")}
+        # let!(:topic2) {FactoryGirl.create(:aspect_topic, user: user, content: "Topic 2")}
+#         
+        # before {visit user_path(user)}
+#         
+        # it {should have_content(user.name)}
+        # it {should have_title(user.name)}
+#         
+        # describe "topics" do
+            # it {should have_content(topic1.content)}
+            # it {should have_content(topic2.content)}
+            # it {should have_content(user.aspect_topics.count)}
+        # end
+#         
+        # describe "deleting an owned topic" do
+            # before do
+                # sign_in user
+                # visit user_path(user)
+            # end
+#             
+            # it "should delete a topic" do
+                # within(".topics li##{topic1.id}") do
+                    # expect{click_link "delete"}.to change(AspectTopic, :count).by(-1)
+                # end
+            # end
+        # end        
+    # end
     
     describe "edit" do
+        
         let(:user) {FactoryGirl.create(:user)}
         before do
             sign_in user
             visit edit_user_path(user)
         end
         describe "page" do
-            it {should have_content("Update Your Profile")}
+            it {should have_content("Update Profile")}
             it {should have_title("Edit User")}
             it {should have_link('Change', href: 'http://gravatar.com/emails')}
         end
@@ -84,7 +105,7 @@ describe "User pages" do
                 click_button "Save changes"
             end
     
-            it {should have_title(new_name)}
+            it {should have_title("Sabaton")}
             it {should have_selector('div.alert.alert-success')}
             it {should have_link('Sign out', href: signout_path)}
             specify {expect(user.reload.name).to  eq new_name}

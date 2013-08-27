@@ -1,0 +1,7 @@
+<section>
+    <h1> <%= gravatar_for user %> 
+        <span><%= user.name %></span>
+        <span><%= user.email %></span>
+        <span>Created <%= pluralize(user.aspect_topics.count, "topics") %></span>
+    </h1>
+</section>

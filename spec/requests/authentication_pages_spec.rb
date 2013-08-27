@@ -23,8 +23,7 @@ describe "Authentication" do
             let(:user) {FactoryGirl.create(:user)}
             before {sign_in user}
 
-            it {should have_title(user.name) }
-            it {should have_link('Profile', href: user_path(user))}
+            it {should have_title("Sabaton") }
             it {should have_link('Settings', href: edit_user_path(user))}
             it {should have_link('Sign out', href: signout_path)}
             it {should_not have_link('Sign in', href: signin_path)}
@@ -40,44 +39,33 @@ describe "Authentication" do
         describe "for non-signed-in users" do
             let(:user) {FactoryGirl.create(:user)}
             
-            describe "when attempting to visit a protected page" do
+            describe "in the AspectTopics controller" do
+                describe "submitting to the create action" do
+                    before {post aspect_topics_path}
+                    specify {expect(response).to redirect_to(signin_path)}
+                end
+                
+                describe "submitting to the delete action" do
+                    before {delete aspect_topic_path(FactoryGirl.create(:aspect_topic))}
+                    specify {expect(response).to redirect_to(signin_path)}
+                end
+            end
+            
+            
+            describe "in sign in page" do
                 before do
-                    visit edit_user_path(user)
+                    visit signin_path
                     fill_in "Email",    with: user.email
                     fill_in "Password", with: user.password
                     click_button "Sign in"
                 end
-
-                describe "after signing in" do
-
-                    it "should render the desired protected page" do
-                        expect(page).to have_title('Edit User')
-                    end
-                    
-                    describe "when signing in again" do
-                        before do
-                            # Sign out.
-                            delete signout_path
-                            visit signin_path
-                            fill_in "Email",    with: user.email
-                            fill_in "Password", with: user.password
-                            click_button "Sign in"
-                        end
-            
-                        it "should render the default (profile) page" do
-                            expect(page).to have_title(user.name)
-                        end
-                    end
+                
+                it "after signing in, should render the home page" do
+                    expect(page).to have_title('Sabaton')
                 end
             end
             
             describe "in the Users controller" do
-                
-                describe "visiting the profile page" do
-                    before {visit user_path(user)}
-                    # Non-signed in user is not authorized to view user edit page.
-                    it {should have_title('Sign In')}
-                end
                 
                 describe "visiting the edit page" do
                     before {visit edit_user_path(user)}
@@ -98,11 +86,6 @@ describe "Authentication" do
             let(:wrong_user) {FactoryGirl.create(:user, email: "wrong@example.com")}
             before {sign_in user, no_capybara: true}
             
-            describe "visiting Users#profile page" do
-                before {visit user_path(wrong_user)}
-                it {should_not have_title(wrong_user.email)}
-            end
-            
             describe "visiting Users#edit page" do
                 before {visit edit_user_path(wrong_user)}
                 it {should_not have_title(full_title('Edit user'))}
@@ -111,6 +94,19 @@ describe "Authentication" do
             describe "submitting a PATCH request to the Users#update action" do
                 before {patch user_path(wrong_user)}
                 specify {expect(response).to redirect_to(root_url)}
+            end
+            
+            describe "delete another user's topic" do
+                let!(:topic) {FactoryGirl.create(:aspect_topic, user: wrong_user)}
+                
+                specify "the topic should not be destroyed" do
+                    expect{delete aspect_topic_path(:topic)}.not_to change(AspectTopic, :count).by(-1)
+                end
+                
+                describe "redirected back to the root_path" do
+                    before {delete aspect_topic_path(:topic)}
+                    specify {expect(response).to redirect_to(root_url)}
+                end
             end
         end
     end
