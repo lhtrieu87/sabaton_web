@@ -7,7 +7,7 @@
     </aside>
     <% end %>
     <div class="span7">
-        <% topics = @topics = AspectTopic.all.paginate(page: params[:page])
+        <% topics = @topics = AspectTopic.all.paginate(page: params[:page], per_page: 10)
         if topics.any? %>
         <h3>No. of topics: <%= topics.count %></h3>
         <ol class="topics">
