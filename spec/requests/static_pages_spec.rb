@@ -25,13 +25,13 @@ describe 'Static pages' do
                 sign_in(user1)
                 visit forum_path
             end
-            it {should have_selector 'aside.span5'}
+            it {should have_selector '#current-user'}
             it "displaying signed in user's name & email & create topic form" do
-                within('aside.span5') do
+                within('#current-user') do
                     should have_content user1.name
                     should have_content user1.email
-                    should have_selector 'form#new_aspect_topic'
                 end
+                should have_selector 'form#new_aspect_topic'
             end
             
             describe "topic creation" do

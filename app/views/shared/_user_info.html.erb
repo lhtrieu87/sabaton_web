@@ -1,7 +1,22 @@
-<section>
-    <h1> <%= gravatar_for user %> 
-        <span><%= user.name %></span>
-        <span><%= user.email %></span>
-        <span>Created <%= pluralize(user.aspect_topics.count, "topics") %></span>
-    </h1>
-</section>
+<div class="row">
+    <div class="span4" id="current-user">
+        <div class="row">
+            <span class="span4"><h4><strong><%= user.name %></strong></h4></span>
+        </div>
+        <p></p>
+        <div class="row">
+            <div class="span2 gravatar">
+                <a class="thumbnail"><%= gravatar_for user %></a>
+            </div>
+            <span class="content span2">
+                <div>
+                    <i><%= user.email %></i>
+                </div>
+                <div>
+                    Created <%= pluralize(user.aspect_topics.count, "topics") %>
+                </div> 
+            </span>
+        </div>
+    </div>
+</div>
+
