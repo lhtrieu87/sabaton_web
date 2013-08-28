@@ -209,6 +209,9 @@ $bannerHeight: 295px;
 
 
 /* content */
+.container {
+    padding: 10px !important;
+}
 
 .gravatar {
     float: left;
@@ -231,7 +234,7 @@ $bannerHeight: 295px;
     font-size: 1.2em;
     line-height: 1.3em;
     margin-bottom: 10px;
-    margin-top: 10px;
+    margin-top: 5px;
 }
 
 
