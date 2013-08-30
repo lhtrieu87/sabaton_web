@@ -16,6 +16,7 @@ describe User do
     it {should respond_to(:authenticate)}
     it {should respond_to(:remember_token)}
     it {should respond_to(:aspect_topics)}
+    it {should respond_to(:comments)}
 
     it {should be_valid}
 
@@ -135,6 +136,40 @@ describe User do
             expect(topics).not_to be_empty
             topics.each do |topic|
                 expect(AspectTopic.where(id: topic.id)).to be_empty
+            end
+        end
+    end
+    
+    describe "comment associations" do
+        let(:me) {FactoryGirl.create(:user)}
+        let(:his_topic) {FactoryGirl.create(:aspect_topic, user: @user)}
+        let(:my_topic) {FactoryGirl.create(:aspect_topic, user: me)}
+        before {@user.save}
+        
+        describe "I comment his topic" do
+            let(:my_comment) {me.comments.build(aspect_topic_id: his_topic.id, content: Faker::Lorem.sentence(20))}
+            specify {expect(my_comment).to be_valid}
+        end
+        
+        describe "I comment my topic" do
+            let(:my_comment) {me.comments.build(aspect_topic: my_topic, content: Faker::Lorem.sentence(20))}
+            specify {expect(my_comment).to be_valid}
+        end
+        
+        let!(:old_comment) {FactoryGirl.create(:comment, user: me, aspect_topic: his_topic, content: Faker::Lorem.sentence(20), created_at: 1.day.ago)}
+        let!(:new_comment) {FactoryGirl.create(:comment, user: me, aspect_topic: his_topic, content: Faker::Lorem.sentence(20), created_at: 1.hour.ago)}
+        
+        it "should have comments appearing in time descending order" do
+            comments = me.comments.where(aspect_topic_id: his_topic.id).to_a
+            expect(comments).to eq [new_comment, old_comment]
+        end
+        
+        it "should destroy all associated comments" do
+            comments = me.comments.to_a
+            me.destroy
+            expect(comments).not_to be_empty
+            comments.each do |comment|
+                expect(Comment.where(id: comment.id)).to be_empty
             end
         end
     end
