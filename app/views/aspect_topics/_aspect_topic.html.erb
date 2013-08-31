@@ -27,6 +27,50 @@
                 </p>
             </div>
         </div>
+        <div class="row">
+            <div class="span7">
+                <!-- Comments -->
+                <% aspect_topic.comments.to_a.each do |comment| %>
+                <div class="row">
+                    <div class="span1 small-gravatar">
+                        <a class="thumbnail"><%= gravatar_for(comment.user, options = { size: 40 }) %></a>
+                    </div>
+                    <div class="span6" style="margin-left: 10px !important;">
+                        <div class="row comment-content">
+                            <div class="span6">
+                                <span class="user-name"><%= comment.user.name %> </span><span><%= comment.content %></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="span6">
+                                <span class="date"><%= time_ago_in_words(comment.created_at) %> </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p></p>
+                <% end %>
+            </div>
+        </div>
+        <% if signed_in? %>
+        <div class="row comment-post-form">
+            <div class="span7">
+                <%= form_for(User.new) do |f| %>
+                <div class="row">
+                    <div class="span6">
+                        <p></p>
+                        <%= f.text_area :email, placeholder: "Post a comment..." %>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="span7">
+                        <%= f.submit "Post", class: "btn" %>
+                    </div>
+                </div>
+                <% end %>
+            </div>
+        </div>
+        <% end %>
         <hr>
     </div>
 </li>

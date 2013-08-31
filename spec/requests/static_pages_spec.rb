@@ -1,11 +1,12 @@
 require 'spec_helper'
+include ActionView::Helpers::DateHelper
 
 describe 'Static pages' do
     subject {page}
     describe 'forum page' do
 
-        let(:user1) {FactoryGirl.create(:user, email: 'sample1@sample1.com')}
-        let(:user2) {FactoryGirl.create(:user, email: 'sample2@sample2.com')}
+        let(:user1) {FactoryGirl.create(:user, name: "user1", email: 'sample1@sample1.com')}
+        let(:user2) {FactoryGirl.create(:user, name: "user2", email: 'sample2@sample2.com')}
         let!(:topic1) {FactoryGirl.create(:aspect_topic, user: user1, content: "Topic 1")}
         let!(:topic2) {FactoryGirl.create(:aspect_topic, user: user2, content: "Topic 2")}
         
@@ -17,7 +18,13 @@ describe 'Static pages' do
         end
         
         describe 'with no signed in user' do
-            it {should_not have_selector 'aside.span5'}
+            it "does not display topic creation form" do 
+                should_not have_selector 'form#new_aspect_topic'
+            end
+            
+            it "does not render comment creation form" do
+                should_not have_selector '.comment-post-form'
+            end
         end
 
         describe 'with a signed in user' do
@@ -74,6 +81,15 @@ describe 'Static pages' do
                     end
                 end
             end
+            
+            it "displaying comment creation form(s)" do
+                within(".topics li##{topic1.id}") do
+                    should have_selector '.comment-post-form'    
+                end
+                within(".topics li##{topic2.id}") do
+                    should have_selector '.comment-post-form'    
+                end
+            end
         end
         
         describe 'displays all topics' do
@@ -89,6 +105,27 @@ describe 'Static pages' do
             end
             it {should have_selector("li##{topic1.id} a", text: "Delete")}
             it {should_not have_selector("li##{topic2.id} a", text: "Delete")}
+        end
+        
+        describe "displays comment(s) for topic(s)" do
+            let!(:comment1) {FactoryGirl.create(:comment, user: user1, aspect_topic: topic1, content: Faker::Lorem.sentence(20), created_at: 1.hour.ago)}
+            let!(:comment2) {FactoryGirl.create(:comment, user: user2, aspect_topic: topic1, content: Faker::Lorem.sentence(20), created_at: 1.day.ago)}
+            
+            before {visit forum_path}
+            
+            it do
+                within("li##{topic1.id}") do
+                    should have_content user1.name
+                    should have_content comment1.content
+                    should have_content time_ago_in_words(comment1.created_at)
+                    should have_selector("img[alt='#{user1.name}']")
+                    
+                    should have_content user2.name
+                    should have_content comment2.content
+                    should have_content time_ago_in_words(comment2.created_at)    
+                    should have_selector("img[alt='#{user2.name}']")
+                end
+            end
         end
     end
 end
