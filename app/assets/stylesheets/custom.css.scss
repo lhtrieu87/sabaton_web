@@ -17,14 +17,13 @@ $pageWidth: 960px;
 
 html {
     overflow-y: scroll;
+    font-family: "Helvetica Neue, Helvetica, Arial, sans-serif";
 }
 
-section {
-    overflow: auto;
-}
 
 textarea {
-    height: 150px;
+    height: 150px !important;
+    width: 100% !important;    
 }
 
 .center {
@@ -208,96 +207,41 @@ $bannerHeight: 295px;
     margin-right: auto;   
 }
 
-#social-icons {
-    background: image-url("socialbuttons_bg.png") no-repeat;
-    width: 183px;
-    height: 72px;
-    padding-top: 12px;
-    padding-left: 8px;
-    float: right;
-    margin-top: -20px;
-    a {
-        float: left;
-        padding-left: 1px;
-        padding-right: 1px;
-    }
-}
-
 
 /* content */
-.content-wrapper {
-    display: block;
-    padding: 10px;
-    margin: auto;
-    
-    .block4 {
-        width: 480px;
-    }
-    
-    .block8 {
-        width: 960px;
-    }
-    
-    .centralized {
-        margin: auto;
-    }
-}
-
-[class*="span"] {
-    float: right;
-}
-
-aside {
-    section {
-        padding: 0px 0px 10px 20px;
-        &:first-child {
-            border: 0;
-        }
-        span {
-            display: block;
-            margin-bottom: 3px;
-            line-height: 1;
-        }
-        h1 {
-            font-size: 1.2em;
-            text-align: left;
-            letter-spacing: -1px;
-            margin-bottom: 3px;
-        }
-    }
+.container {
+    padding: 10px !important;
 }
 
 .gravatar {
     float: left;
-    margin-right: 10px;
+    width: 80px !important;
+    height: 80px !important;
 }
 
 /* topics --start */
 .topics {
-    margin: 25px 0 0 0;
+    margin-top: 15px;
     list-style: none;
 
     li {
         padding: 10px 0;
-        border-top: 1px solid #e8e8e8;
         min-height: 120px;
     }
 }
 
 .content {
-    display: block;
+    font-size: 1.2em;
+    line-height: 1.3em;
+    margin-bottom: 10px;
+    margin-top: 5px;
 }
-
-.timestamp {
-    color: $grayLight;
-}
-/* topics --end */
 
 
 /* forms --start */
 input, textarea, select, .uneditable-input {
     border: 1px solid #bbb;
-    width: 100%;
+    width: 100%;    
     padding: 10px;
     margin-bottom: 15px;
     @include box_sizing;

@@ -1,9 +1,13 @@
-<section>
-    <%= form_for(@topic) do |f| %>
+<div class="row">
+    <div class="span4">
+        <%= form_for(@topic) do |f| %>
         <%= render 'shared/error_messages', object: f.object %>
-        <div class="field">
-            <%= f.text_area :content, placeholder: "Create new topic..." %>
+        <div class="field row">
+            <div class="span4"><%= f.text_area :content, placeholder: "Create new topic..." %></div>
         </div>
-        <%= f.submit "Create", class: "btn btn-primary" %>
-    <% end %>
-</section>
+        <div class="field row">
+            <div class="span4"><%= f.submit "Create", class: "btn btn-primary" %></div>
+        </div>
+        <% end %>
+    </div>
+</div>
