@@ -1,0 +1,13 @@
+<%= form_for current_user.comments.build, :url => {:controller => 'comments', :action => 'create'}, remote: true do |form| %>
+<div class="row">
+    <div class="span7">
+        <%= form.hidden_field :aspect_topic_id, value: topic.id, id: "comment_aspect_topic_id_#{topic.id}" %>
+    </div>
+</div>
+<div class="row">
+    <div class="span6">
+        <p></p>
+        <%= form.text_area :content, placeholder: "Your comment...", id: "comment_content_aspect_topic_id_#{topic.id}" %>
+    </div>
+</div>
+<% end %>

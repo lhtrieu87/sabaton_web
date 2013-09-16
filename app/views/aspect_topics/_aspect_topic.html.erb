@@ -1,4 +1,4 @@
-<li id="<%= aspect_topic.id %>" class"row">
+<li id="<%= aspect_topic.id %>" class="row">
     <div class="span7">
         <div class="row">
             <span class="span7"><h4><strong><%= aspect_topic.user.name %></strong></h4></span>
@@ -55,19 +55,7 @@
         <% if signed_in? %>
         <div class="row comment-post-form">
             <div class="span7">
-                <%= form_for(User.new) do |f| %>
-                <div class="row">
-                    <div class="span6">
-                        <p></p>
-                        <%= f.text_area :email, placeholder: "Post a comment..." %>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="span7">
-                        <%= f.submit "Post", class: "btn" %>
-                    </div>
-                </div>
-                <% end %>
+                <%= render "comments/comment", topic: aspect_topic %>
             </div>
         </div>
         <% end %>
