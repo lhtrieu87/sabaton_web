@@ -17,7 +17,7 @@
                     <i class="icon-time"></i>
                     <span>Created <%= time_ago_in_words(aspect_topic.created_at) %> ago.</span>
                     | <i class="icon-comment"></i>
-                    <span>3 comments</span>
+                    <span class='comment-no'><%= pluralize(aspect_topic.comments.count, "comment") %></span>
                     <% if current_user?(aspect_topic.user) %>
                     | <i class="icon-trash"></i>
                     <%= link_to "Delete", aspect_topic, method: :delete,
@@ -28,26 +28,10 @@
             </div>
         </div>
         <div class="row">
-            <div class="span7">
+            <div class="span7 comments">
                 <!-- Comments -->
                 <% aspect_topic.comments.to_a.each do |comment| %>
-                <div class="row">
-                    <div class="span1 small-gravatar">
-                        <a class="thumbnail"><%= gravatar_for(comment.user, options = { size: 40 }) %></a>
-                    </div>
-                    <div class="span6" style="margin-left: 10px !important;">
-                        <div class="row comment-content">
-                            <div class="span6">
-                                <span class="user-name"><%= comment.user.name %> </span><span><%= comment.content %></span>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="span6">
-                                <span class="date"><%= time_ago_in_words(comment.created_at) %> </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    <%= render "comments/comment", comment: comment %>
                 <p></p>
                 <% end %>
             </div>
@@ -55,10 +39,9 @@
         <% if signed_in? %>
         <div class="row comment-post-form">
             <div class="span7">
-                <%= render "comments/comment", topic: aspect_topic %>
+                <%= render "comments/comment_form", topic: aspect_topic %>
             </div>
         </div>
         <% end %>
-        <hr>
     </div>
 </li>

@@ -1,11 +1,17 @@
 class CommentsController < ApplicationController
     before_action :signed_in_user, only: [:create, :destroy]
-    
     def create
         @comment = current_user.comments.build(comment_params)
-        @comment.save
+
         respond_to do |format|
-            format.js
+            if @comment.save
+                format.js {render json: [{
+                                 'aspect_topic_id' => @comment.aspect_topic_id,
+                                            'html' => render_to_string(:action => "create", :layout => false)
+                                        }]
+                }
+            else
+            end
         end
     end
 

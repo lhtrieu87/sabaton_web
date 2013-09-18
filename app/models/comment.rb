@@ -2,7 +2,7 @@ class Comment < ActiveRecord::Base
     belongs_to :user
     belongs_to :aspect_topic
     
-    default_scope -> {order('created_at DESC')}
+    default_scope -> {order('created_at ASC')}
     
     validates :user_id, presence: true
     validates :aspect_topic_id, presence: true

@@ -156,12 +156,12 @@ describe User do
             specify {expect(my_comment).to be_valid}
         end
         
-        let!(:old_comment) {FactoryGirl.create(:comment, user: me, aspect_topic: his_topic, content: Faker::Lorem.sentence(20), created_at: 1.day.ago)}
         let!(:new_comment) {FactoryGirl.create(:comment, user: me, aspect_topic: his_topic, content: Faker::Lorem.sentence(20), created_at: 1.hour.ago)}
+        let!(:old_comment) {FactoryGirl.create(:comment, user: me, aspect_topic: his_topic, content: Faker::Lorem.sentence(20), created_at: 1.day.ago)}
         
-        it "should have comments appearing in time descending order" do
+        it "should have comments appearing in time ascending order" do
             comments = me.comments.where(aspect_topic_id: his_topic.id).to_a
-            expect(comments).to eq [new_comment, old_comment]
+            expect(comments).to eq [old_comment, new_comment]
         end
         
         it "should destroy all associated comments" do

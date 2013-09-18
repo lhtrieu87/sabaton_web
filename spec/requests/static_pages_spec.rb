@@ -115,6 +115,8 @@ describe 'Static pages' do
             
             it do
                 within("li##{topic1.id}") do
+                    should have_content '2 comments'
+                    
                     should have_content user1.name
                     should have_content comment1.content
                     should have_content time_ago_in_words(comment1.created_at)
@@ -124,6 +126,17 @@ describe 'Static pages' do
                     should have_content comment2.content
                     should have_content time_ago_in_words(comment2.created_at)    
                     should have_selector("img[alt='#{user2.name}']")
+                end
+            end
+        end
+        
+        describe "the topic only has one comment" do
+            let!(:comment3) {FactoryGirl.create(:comment, user: user2, aspect_topic: topic2, content: Faker::Lorem.sentence(20), created_at: 1.day.ago)}
+            before {visit forum_path}
+            it "should display text of '1 comment'" do
+                within("li##{topic2.id}") do
+                    p topic2.comments.count
+                    should have_content '1 comment'
                 end
             end
         end

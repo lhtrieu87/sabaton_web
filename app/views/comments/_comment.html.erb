@@ -1,13 +1,17 @@
-<%= form_for current_user.comments.build, :url => {:controller => 'comments', :action => 'create'}, remote: true do |form| %>
 <div class="row">
-    <div class="span7">
-        <%= form.hidden_field :aspect_topic_id, value: topic.id, id: "comment_aspect_topic_id_#{topic.id}" %>
+    <div class="span1 small-gravatar" style="margin-right: -15px !important;">
+        <a class="thumbnail"><%= gravatar_for(comment.user, options = {size: 40}) %></a>
     </div>
-</div>
-<div class="row">
     <div class="span6">
-        <p></p>
-        <%= form.text_area :content, placeholder: "Your comment...", id: "comment_content_aspect_topic_id_#{topic.id}" %>
+        <div class="row comment-content">
+            <div class="span6">
+                <span class="user-name"><%= comment.user.name %> </span><span><%= comment.content %></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="span6">
+                <span class="date"><%= time_ago_in_words(comment.created_at) %> ago</span>
+            </div>
+        </div>
     </div>
 </div>
-<% end %>

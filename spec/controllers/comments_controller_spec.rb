@@ -32,7 +32,10 @@ describe CommentsController do
             its(:user_id) {should eq me.id}
             its(:content) {should eq content}
             it "should respond with success" do
-                expect(response).to be_success      
+                expect(response).to be_success
+                parsed_body = JSON.parse(response.body)
+                expect(parsed_body[0]['aspect_topic_id']).to equal my_topic.id  
+                expect(parsed_body[0]['html']).to be_true    
             end      
         end
         
@@ -49,7 +52,10 @@ describe CommentsController do
             its(:content) {should eq content}
             
             it "should respond with success" do
-                expect(response).to be_success      
+                expect(response).to be_success 
+                parsed_body = JSON.parse(response.body)
+                expect(parsed_body[0]['aspect_topic_id']).to equal user_topic.id 
+                expect(parsed_body[0]['html']).to be_true      
             end 
         end
     end
