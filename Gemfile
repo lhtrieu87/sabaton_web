@@ -15,12 +15,14 @@ group :development, :test do
     gem 'spork-rails', github: 'sporkrb/spork-rails'
     gem 'guard-spork', '1.5.0'
     gem 'childprocess', '0.3.9'
+    gem "jasminerice", :git => 'https://github.com/bradphelan/jasminerice.git'
 end
 
 group :test do
     gem 'selenium-webdriver', '2.0.0'
     gem 'capybara', '2.1.0'
     gem 'factory_girl_rails', '4.2.1'
+    gem 'debugger'
 end
 
 # Hash function irreversibly encrypt the password

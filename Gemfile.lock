@@ -6,6 +6,13 @@ GIT
       rails (>= 3.0.0, < 5)
       spork (>= 1.0rc0)
 
+GIT
+  remote: https://github.com/bradphelan/jasminerice.git
+  revision: 091349c27343bfa728b8e5745675f9ddbb7d9699
+  specs:
+    jasminerice (0.1.0)
+      coffee-rails
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -57,6 +64,13 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.3)
+    columnize (0.3.6)
+    debugger (1.6.1)
+      columnize (>= 0.3.1)
+      debugger-linecache (~> 1.2.0)
+      debugger-ruby_core_source (~> 1.2.3)
+    debugger-linecache (1.2.0)
+    debugger-ruby_core_source (1.2.3)
     diff-lcs (1.2.4)
     erubis (2.7.0)
     execjs (1.4.0)
@@ -211,10 +225,12 @@ DEPENDENCIES
   capybara (= 2.1.0)
   childprocess (= 0.3.9)
   coffee-rails (~> 4.0.0)
+  debugger
   factory_girl_rails (= 4.2.1)
   faker (~> 1.1.2)
   guard-rspec (= 2.5.0)
   guard-spork (= 1.5.0)
+  jasminerice!
   jbuilder (~> 1.2)
   jquery-rails
   pg (= 0.15.1)

@@ -1,6 +1,6 @@
 <div class="row">
     <div class="span4">
-        <%= form_for(@topic) do |f| %>
+        <%= form_for @topic, :url => {:controller => 'aspect_topics', :action => 'create'} do |f| %>
         <%= render 'shared/error_messages', object: f.object %>
         <div class="field row">
             <div class="span4"><%= f.text_area :content, placeholder: "Create new topic..." %></div>

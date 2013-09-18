@@ -219,13 +219,19 @@ $bannerHeight: 295px;
     height: 80px !important;
 }
 
+.small-gravatar {
+    float: left;
+    width: 40px !important;
+    height: 40px !important;
+    margin-bottom: 5px !important;
+}
+
 /* topics --start */
 .topics {
     margin-top: 15px;
     list-style: none;
 
     li {
-        padding: 10px 0;
         min-height: 120px;
     }
 }
@@ -235,6 +241,10 @@ $bannerHeight: 295px;
     line-height: 1.3em;
     margin-bottom: 10px;
     margin-top: 5px;
+}
+
+.comment-content {
+    font-size: 1.0em;
 }
 
 
@@ -265,6 +275,21 @@ input {
 }
 
 /* forms --end */
+
+.comment-post-form {
+    textarea {
+        height: 50px !important;
+    }
+}
+
+.user-name {
+    color: #0081cc;
+    font-weight: bold;
+}
+
+.date {
+    color: gray;
+}
 
 /* miscellaneous */
 

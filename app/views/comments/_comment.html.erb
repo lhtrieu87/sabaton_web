@@ -1,0 +1,17 @@
+<div class="row">
+    <div class="span1 small-gravatar" style="margin-right: -15px !important;">
+        <a class="thumbnail"><%= gravatar_for(comment.user, options = {size: 40}) %></a>
+    </div>
+    <div class="span6">
+        <div class="row comment-content">
+            <div class="span6">
+                <span class="user-name"><%= comment.user.name %> </span><span><%= comment.content %></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="span6">
+                <span class="date"><%= time_ago_in_words(comment.created_at) %> ago</span>
+            </div>
+        </div>
+    </div>
+</div>

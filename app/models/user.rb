@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
     has_many :aspect_topics, dependent: :destroy
+    has_many :comments, dependent: :destroy
     
     before_save do
         self.email = email.downcase

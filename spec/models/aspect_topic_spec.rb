@@ -40,4 +40,18 @@ describe AspectTopic do
         
         specify {expect(AspectTopic.all.to_a).to eq [new_topic, old_topic]}
     end
+    
+    describe "comment association" do
+        let(:topic) {FactoryGirl.create(:aspect_topic, user: user, content: "Topic")}
+        let!(:comment1) {FactoryGirl.create(:comment, user: user, aspect_topic: topic, content: Faker::Lorem.sentence(20), created_at: 1.day.ago)}
+        let!(:comment2) {FactoryGirl.create(:comment, user: user, aspect_topic: topic, content: Faker::Lorem.sentence(20), created_at: 1.hour.ago)}
+        it "should destroy all associated comments" do
+            comments = topic.comments.to_a
+            topic.destroy
+            expect(comments).not_to be_empty
+            comments.each do |comment|
+                expect(Comment.where(id: comment.id)).to be_empty
+            end
+        end
+    end
 end
