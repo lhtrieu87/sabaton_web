@@ -8,7 +8,6 @@ class AspectTopicsController < ApplicationController
             flash[:success] = "A new topic has been created!"
             redirect_to forum_path
         else
-            p @topic.errors.count
             render 'static_pages/forum'
         end
     end
