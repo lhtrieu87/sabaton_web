@@ -42,9 +42,10 @@ describe "Comments' actions:", ->
                     expect($('#300 .comments')).toContainText 'A testing comment!!!'
                 it 'the form-textarea should lose the focus', ->
                     $('#300 textarea').focus()
+                    $('#300 textarea').val('Hello!!!')
                     pressEnterOn($('#300 .comment-post-form textarea'))
                     expect($('#300 textarea')).not.toBeFocused()
-              
+                    expect($('#300 textarea').val()).toBe ""
                 
             
                     

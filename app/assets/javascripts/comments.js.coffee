@@ -20,7 +20,9 @@ root.commentCreated = (data) ->
     comments = $('#' + topicId).find '.comments'
     comments.append data['html']
     
-    $('#' + topicId).find('.comment-post-form textarea').blur()
+    textarea = $('#' + topicId).find('.comment-post-form textarea')
+    textarea.blur()
+    textarea.val("")
 
 $(document).on "keypress", ".comment-post-form textarea", (e) ->
     if e.keyCode == 13
