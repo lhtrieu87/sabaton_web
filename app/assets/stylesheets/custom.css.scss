@@ -61,6 +61,13 @@ p {
     line-height: 1.7em;
 }
 
+#logo {
+    float: left;
+    position: absolute;
+    top: 10px;
+    margin-left: 10px;
+}
+
 /* banner */
 $bannerHeight: 295px;
 #banner {
