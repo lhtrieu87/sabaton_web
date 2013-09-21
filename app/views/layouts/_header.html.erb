@@ -15,15 +15,15 @@
                 <!-- Responsive Navbar Part 2: Place all navbar contents you want collapsed withing .navbar-collapse.collapse. -->
                 <div class="nav-collapse collapse" style="float: right">
                     <ul class="nav">
-                        <li class="active">
+                        <li id="home-btn" class="<%= 'active' if current_page?(root_path) %>">
                             <%= link_to "Home", root_path %>
                         </li>
-                        <li>
+                        <li id="forum-btn" class="<%= 'active' if current_page?(forum_path) %>">
                             <%= link_to "Forum", forum_path %>
                         </li>
                         <!-- Read about Bootstrap dropdowns at http://twbs.github.com/bootstrap/javascript.html#dropdowns -->
                         <% if signed_in? %>
-                        <li class="dropdown">
+                        <li id="account-btn" class="dropdown <%= 'active' if current_page?(edit_user_path current_user) %>">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Account <b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li>
@@ -36,10 +36,10 @@
                             </ul>
                         </li>
                         <% else %>
-                        <li>
+                        <li id="sign-up-btn" class="<%= 'active' if current_page?(signup_path) %>">
                             <%= link_to "SIGN UP", signup_path %>
                         </li>
-                        <li>
+                        <li id="sign-in-btn" class="<%= 'active' if current_page?(signin_path) %>">
                             <%= link_to "SIGN IN", signin_path %>
                         </li>
                         <% end %>
