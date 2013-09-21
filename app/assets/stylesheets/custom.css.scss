@@ -4,7 +4,110 @@ $grayLight: #bbb;
 $white: #fff;
 $grayMediumLight: #eaeaea;
 
-$pageWidth: 960px;
+$pageWidth: 1200px;
+
+     
+.navbar-wrapper {
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    margin: 5px;
+}
+            
+.carousel {
+    margin: auto;
+    width: $pageWidth;
+}
+
+.carousel .container {
+    z-index: 9;
+}
+
+.carousel-control {
+    height: 80px;
+    margin-top: 0;
+    font-size: 120px;
+    text-shadow: 0 1px 1px rgba(0,0,0,.4);
+    background-color: transparent;
+    border: 0;
+    z-index: 10;
+}
+
+.carousel-caption {
+    position: static;
+    background-color: transparent;
+    max-width: 550px;
+    padding: 0 20px;
+    margin-top: 200px;
+}
+
+.carousel-caption h1, .carousel-caption .lead {
+    margin: 0;
+    line-height: 1.25;
+    color: #fff;
+    text-shadow: 0 1px 1px rgba(0,0,0,.4);
+}
+            
+.carousel-caption .btn {
+    margin-top: 15px;
+}
+
+/* RESPONSIVE CSS
+-------------------------------------------------- 
+*/
+
+@media (max-width: 1200px) {
+    .carousel {
+        margin: auto;
+        width: 100%;
+    }
+    
+    .carousel-caption h1 {
+        font-size: 30px !important;
+    }
+    .carousel-caption .lead, .carousel-caption .btn {
+        font-size: 18px !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .carousel {
+        margin: auto;
+        width: 100%;
+        top: 50px;
+        margin-bottom: 60px !important;
+    }
+    
+    .carousel .container {
+        max-width: 100% !important;
+        width: 100% !important;
+    }
+    
+    .carousel-caption {
+        position: static !important;
+        margin-top: 20px;
+        max-width: 100% !important;
+        width: 100% !important;
+    }
+    .carousel-caption h1 {
+        font-size: 23px !important;
+        margin-right: 20px;
+    }
+    .carousel-caption .lead, .carousel-caption .btn {
+        font-size: 16px !important;
+        margin-right: 20px;
+        margin-top: 10px;
+    }
+    .carousel-control {
+        top: 180px !important;
+    }
+    
+    #logo img {
+        opacity: 0.8;
+        filter:alpha(opacity=80); /* For IE8 and earlier */
+    }
+}
 
 
 @mixin box_sizing {
@@ -13,88 +116,18 @@ $pageWidth: 960px;
     box-sizing: border-box;
 }
 
-/* universal */
-
-html {
-    overflow-y: scroll;
-    font-family: "Helvetica Neue, Helvetica, Arial, sans-serif";
-}
-
-
-textarea {
-    height: 150px !important;
-    width: 100% !important;    
-}
-
-.center {
-    text-align: center;
-    h1 {
-        margin-bottom: 10px;
-    }
-}
-
-
-/* typography */
-
-h1, h2, h3, h4, h5, h6 {
-    line-height: 1;
-}
-
-h1 {
-    font-size: 3em;
-    letter-spacing: -2px;
-    margin-bottom: 30px;
-    text-align: center;
-}
-
-h2 {
-    font-size: 1.2em;
-    letter-spacing: -1px;
-    margin-bottom: 30px;
-    text-align: center;
-    font-weight: normal;
-    color: $grayLight;
-}
-
-p {
-    font-size: 1.1em;
-    line-height: 1.7em;
-}
 
 #logo {
     float: left;
-    position: absolute;
-    top: 10px;
-    margin-left: 10px;
 }
 
-/* banner */
-$bannerHeight: 295px;
-#banner {
-    background: image-url("banner.jpg") #131313 center top no-repeat;
-    height: $bannerHeight;
-    .banner-content {
-        width: 50%;
-        margin: auto;
-        height: $bannerHeight;
-        text-align: center;
-        padding-top: 250px;
-    }
-}
 
-#apple-store-button {
-    width: 136px; 
-    height: 49px; 
-    display: block;
-    margin-left: auto;
-    margin-right: auto;   
-}
+
+
 
 
 /* content */
-.container {
-    padding: 10px !important;
-}
+
 
 .gravatar {
     float: left;
@@ -141,6 +174,10 @@ input, textarea, select, .uneditable-input {
 
 input {
     height: auto !important;
+}
+
+textarea {
+    width: 100% !important;
 }
 
 #error_explanation {
