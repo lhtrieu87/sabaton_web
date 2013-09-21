@@ -109,6 +109,15 @@ $pageWidth: 1200px;
     }
 }
 
+#marketing-btns {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.marketing-btn {
+    margin: 5px;
+}
+
 
 @mixin box_sizing {
     -moz-box-sizing: border-box;
