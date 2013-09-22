@@ -70,6 +70,11 @@ body {
     position: static !important;
 }
 
+.hero-unit {
+    padding: 20px 50px 10px !important;
+    margin-top: 10px;
+}
+
 /* RESPONSIVE CSS
 -------------------------------------------------- 
 */
@@ -133,6 +138,10 @@ body {
     .flex-video {
         padding-bottom: 57.25%;
         height: 0;
+    }
+    
+    .hero-unit {
+        padding: 20px !important;
     }
 }
 
