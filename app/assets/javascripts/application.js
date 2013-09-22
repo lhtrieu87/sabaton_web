@@ -15,4 +15,8 @@
 //= require bootstrap
 //= require turbolinks
 //= require_tree .
+$(document).ready(function() {
+    if ($('.nav li.active').length > 1)
+        alert ("Cannot have more than one navigational button active at once!");
+});
 
