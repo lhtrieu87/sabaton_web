@@ -76,6 +76,24 @@ body {
     font-size: 21px !important;
 }
 
+.avatars {
+    text-align: center;
+    img {
+        height: 365px !important;
+    }   
+}
+
+.concept_arts {
+    text-align: center;
+    img {
+        padding-bottom: 10px;
+    }
+}
+
+.maps {
+    text-align: center;
+}
+
 /* RESPONSIVE CSS
 -------------------------------------------------- 
 */
@@ -91,6 +109,18 @@ body {
     }
     .carousel-caption .lead, .carousel-caption .btn {
         font-size: 18px !important;
+    }
+    
+    .avatars img {
+        height: 300px !important;
+    }
+    
+    .concept_arts img {
+        height: 200px !important;
+    }
+    
+    .maps img {
+        height: 400px !important;
     }
 }
 
@@ -148,6 +178,21 @@ body {
     .marketing-btn {
         display: block;
     }
+    
+    .avatars {
+        img {
+            height: 400px !important;
+        }   
+    }
+    
+    .concept_arts img {
+        width: 70% !important;
+        height: 70% !important;
+    }
+    
+    .maps img {
+        padding-bottom: 10px;
+    }
 }
 
 #marketing-btns {
@@ -184,7 +229,12 @@ body {
 .gap2 {
     height: 20px;
 }
-
+.gap3 {
+    height: 30px;
+}
+.gap4 {
+    height: 40px;
+}
 
 
 /* content */
