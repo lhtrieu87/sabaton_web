@@ -1,9 +1,12 @@
 <% provide(:title, 'Sign Up') %> <h1>Sign Up</h1>
-<div class="block4 centralized">
-    <%= form_for(@user) do |f| %>
-    <%= render 'layouts/user_form_fields', f: f %>
-
-    <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
-    <% end %>
+<div class="row">
+    <div class="span6 offset3">
+        <div class=" white-panel">
+            <%= form_for(@user) do |f| %>
+            <%= render 'layouts/user_form_fields', f: f %>
+            <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
+            <% end %>
+        </div>
+    </div>
 </div>
 
