@@ -22,6 +22,18 @@ body {
     z-index: 10;
     margin: 5px;
 }
+
+.flex-img {
+    margin-bottom: 20px;
+}
+
+.flex-gap {
+    margin-top: 120px;
+}
+
+.flex-mini-gap {
+    margin-top: 60px;
+}
             
 .carousel {
     margin: auto;
@@ -50,11 +62,42 @@ body {
     margin-top: 200px;
 }
 
+.featurette {
+    padding-top: 50px;
+    overflow: hidden;
+    .featurette-image {
+        margin-top: -60px;
+    }
+    
+    .pull-right {
+        margin-left: 40px;
+    }
+    
+    .pull-left {
+        margin-right: 40px;
+    }
+}
+
+hr {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.featurette-heading {
+    font-size: 50px;
+    font-weight: 300;
+    line-height: 1;
+    padding-bottom: 10px;
+}
+
 .carousel-caption h1, .carousel-caption .lead {
     margin: 0;
     line-height: 1.25;
     color: #fff;
     text-shadow: 0 1px 1px rgba(0,0,0,.4);
+    li {
+        line-height: 30px;
+    }
 }
             
 .carousel-caption .btn {
@@ -79,7 +122,6 @@ body {
 .avatars {
     text-align: center;
     img {
-        height: 365px !important;
     }   
 }
 
@@ -93,6 +135,21 @@ body {
 .maps {
     text-align: center;
 }
+
+.card {
+    background-color: $white;
+    border: 2px solid $grayMediumLight;
+    margin: -5px;
+    color: #333;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    -webkit-box-shadow: 10px 10px 5px #888;
+    -moz-box-shadow: 10px 10px 5px #888;
+    box-shadow: 0 3px 15px 3px #888;
+}
+
+
 
 /* RESPONSIVE CSS
 -------------------------------------------------- 
@@ -112,7 +169,6 @@ body {
     }
     
     .avatars img {
-        height: 300px !important;
     }
     
     .concept_arts img {
@@ -121,6 +177,10 @@ body {
     
     .maps img {
         height: 400px !important;
+    }
+    
+    .flex-gap {
+        margin-top: 60px;
     }
 }
 
@@ -181,7 +241,6 @@ body {
     
     .avatars {
         img {
-            height: 400px !important;
         }   
     }
     
@@ -192,6 +251,38 @@ body {
     
     .maps img {
         padding-bottom: 10px;
+    }
+    
+    .card {
+        margin-top: 20px;
+    }
+    
+    .flex-img {
+        margin: 0 auto 20px !important;
+        display: block;
+        float: none !important;
+    }
+    
+    hr {
+        padding: 0px;
+    }
+    
+    .featurette {
+        padding-top: 0px;
+        .featurette-image {
+            height: 60% !important;
+            max-height: 60% !important;
+            margin-top: 0px;
+            margin-left: 0px;
+        }
+    }
+    
+    .flex-gap {
+        margin-top: 20px;
+    }
+    
+    .flex-mini-gap {
+        margin-top: 0px;
     }
 }
 
@@ -290,6 +381,7 @@ h1 {
     -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .075);
     -moz-box-shadow: 0 1px 2px rgba(0,0,0,.075);
     box-shadow: 0 1px 2px rgba(0, 0, 0, .075);
+    line-height: 1.6em !important;
 }
 
 /* forms --start */
