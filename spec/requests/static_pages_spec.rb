@@ -13,8 +13,8 @@ describe 'Static pages' do
         before {visit forum_path}
         
         describe "with correct path" do
-            it {should have_title 'Aspect Forum'}
-            it {should have_content 'Aspect Forum'}
+            it {should have_title 'Aspects Forum'}
+            it {should have_content 'Aspects Forum'}
         end
         
         describe 'with no signed in user' do
@@ -50,7 +50,7 @@ describe 'Static pages' do
                     describe "error messages" do
                         before {click_button "Create"}
                         it {should have_content 'error'}
-                        it {should have_content 'Aspect Forum'}
+                        it {should have_content 'Aspects Forum'}
                     end
                 end
                 
@@ -66,7 +66,7 @@ describe 'Static pages' do
                     describe "successful message" do
                         before {click_button "Create"}
                         it {should have_selector('div.alert.alert-success')}
-                        it {should have_content 'Aspect Forum'}
+                        it {should have_content 'Aspects Forum'}
                     end
                 end
             end
